@@ -45,7 +45,12 @@ class BookReservationAppApplicationTests {
 				.post("categories/")
 				.then().log().all()
 				.extract().as(SuccessReg.class);
+	Assert.assertNotNull(seccessReg.getId());
+	Assert.assertNotNull(seccessReg.getToken());
 	Assertions.assertEquals(id, seccessReg.getId());
 	Assertions.assertEquals(token, seccessReg.getToken());
-}
+	}
+	void unSuccessRegTest() {
+
+	}
 }
