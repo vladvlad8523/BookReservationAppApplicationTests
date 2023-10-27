@@ -1,20 +1,15 @@
 
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import io.restassured.specification.ResponseSpecification;
 import org.asynchttpclient.Response;
 import org.example.UserData;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.responseSpecification;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 class BookReservationAppApplicationTests {
 	private  final static String URL = "http://localhost:8080/";
