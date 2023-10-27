@@ -2,12 +2,15 @@
 import io.restassured.http.ContentType;
 import io.restassured.specification.ResponseSpecification;
 import org.example.UserData;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.responseSpecification;
+import static org.junit.Assert.assertEquals;
 
 class BookReservationAppApplicationTests {
 	private  final static String URL = "http://localhost:8080/";
@@ -31,15 +34,18 @@ class BookReservationAppApplicationTests {
 
 //        }
 	}
-public void SuccesRegTest() {
-		Integer id;
-		String token;
+	@Test
+	 void SuccesRegTest() {
+		Integer id = 123;
+		String token = "";
 		Register user = new Register("Tomas", "1234567889");
 		SuccessReg seccessReg = given()
-				.body(user)
+				//.body(user)
 				.when()
 				.post("categories/")
 				.then().log().all()
 				.extract().as(SuccessReg.class);
+	Assertions.assertEquals(id, seccessReg.getId());
+	Assertions.assertEquals(token, seccessReg.getToken());
 }
 }
