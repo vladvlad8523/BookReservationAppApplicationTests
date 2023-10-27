@@ -1,6 +1,8 @@
 
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.specification.ResponseSpecification;
+import org.asynchttpclient.Response;
 import org.example.UserData;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +12,9 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.responseSpecification;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 class BookReservationAppApplicationTests {
 	private  final static String URL = "http://localhost:8080/";
@@ -50,7 +54,16 @@ class BookReservationAppApplicationTests {
 	Assertions.assertEquals(id, seccessReg.getId());
 	Assertions.assertEquals(token, seccessReg.getToken());
 	}
+	@Test
 	void unSuccessRegTest() {
+		Response response = (Response) given()
+				.when()
+				.get("categories/")
+				.then().log().all()
+				.body("data.id", notNullValue()) //pradubliuot galim visus korteles duomenys ar yra.
+				.extract().response();
+		JsonPath jsonPath = JsonPath.given(response.getContentType());
+				List<Integer> ids = jsonPath.get("data.id"); //pradubliuot galim visus korteles duomenys ar yra.
 
 	}
 }
