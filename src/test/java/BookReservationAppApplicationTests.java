@@ -11,7 +11,7 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
-class BookReservationAppApplicationTests {
+class BookReservationAppApplicationTests extends BaseSettingsTest {
 	private  final static String URL = "http://localhost:8080/";
 
 	@Test
