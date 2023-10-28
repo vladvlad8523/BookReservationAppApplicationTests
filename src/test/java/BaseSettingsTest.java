@@ -8,9 +8,9 @@ abstract public class BaseSettingsTest {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         Configuration.browser = "chrome";
-        Configuration.driverManagerEnable ="true";
+        Configuration.webdriverLogsEnabled = true;
         Configuration.browserSize = "1680x1050";
-        Configuration.headless = "false";
+        Configuration.headless = false;
     }
     @Before
     public void  init() {

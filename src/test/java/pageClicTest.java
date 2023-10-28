@@ -1,9 +1,7 @@
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
-import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
-public class pageClicTest {
+public class pageClicTest extends BaseSettingsTest {
     @Test
     void clicTest() {
         open("http://localhost:3000/");
@@ -14,7 +12,7 @@ public class pageClicTest {
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/reserved']").click();
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/about']").click();
         $x("//div[@id='navbarSupportedContent']//input[@class='form-control me-2']").
-                setValue("1234567890").pressEnter();
+                setValue("^(?!.*(.)\\1)[A-Z][a-z]{4,49}$").pressEnter();
 
     }
 

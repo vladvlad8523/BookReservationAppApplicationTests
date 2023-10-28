@@ -1,7 +1,7 @@
 
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import org.asynchttpclient.Response;
+import io.restassured.response.Response;
 import org.example.UserData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
-class BookReservationAppApplicationTests extends BaseSettingsTest {
+class BookReservationAppApplicationTests {
 	private  final static String URL = "http://localhost:8080/";
 
 	@Test
