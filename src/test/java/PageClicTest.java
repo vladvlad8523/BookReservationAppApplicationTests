@@ -1,9 +1,12 @@
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PageClicTest extends BaseSettingsTest{
     @Test
      void testClick() {
+        Configuration.browser = "chrome";
+        Configuration.browserSize = "1680x1050";
         open("http://localhost:3000/");
         $x("//a/img").click();
         $x("//ul/li/a[@class='nav-link'][1]").click();
