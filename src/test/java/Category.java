@@ -1,3 +1,5 @@
+import io.restassured.path.json.JsonPath;
+
 public class Category {
 
     private String name;
