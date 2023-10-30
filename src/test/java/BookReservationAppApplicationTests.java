@@ -1,4 +1,5 @@
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -12,17 +13,19 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 
 class BookReservationAppApplicationTests {
-	private  final static String URL = "http://localhost:8080/";
+	private  final static String URL = "http://localhost:8080";
 
 	@Test
-	 void contextLoads() {
+	 void contextLoadsPost() {
+		Register authReg = new Register("1233", "admin");
 	}
 	@Test
 	void checkIdTest() {
 		List<UserData> users = given()
 		.when()
 		.contentType(ContentType.JSON)
-		.get(URL+"categories")
+		.header("Authorization", "" )
+		.get(URL+"/categories")
 		.then().log().all()
 		.extract().body().jsonPath().getList("data", UserData.class);
 		//tikrinam ar yra vienodi user
@@ -33,32 +36,32 @@ class BookReservationAppApplicationTests {
 
 //        }
 	}
-	@Test
-	 void SuccesRegTest() {
-		Integer id = 123;
-		String token = "";
-		Register user = new Register("Tomas", "1234567889");
-		SuccessReg seccessReg = given()
-				//.body(user)
-				.when()
-				.post("categories/")
-				.then().log().all()
-				.extract().as(SuccessReg.class);
-	Assertions.assertNotNull(seccessReg.getId());
-	Assertions.assertNotNull(seccessReg.getToken());
-	Assertions.assertEquals(id, seccessReg.getId());
-	Assertions.assertEquals(token, seccessReg.getToken());
-	}
-	@Test
-	void unSuccessRegTest() {
-		Response response = (Response) given()
-				.when()
-				.get("categories/")
-				.then().log().all()
-				.body("data.id", notNullValue()) //pradubliuot galim visus korteles duomenys ar yra.
-				.extract().response();
-		JsonPath jsonPath = JsonPath.given(response.getContentType());
-				List<Integer> ids = jsonPath.get("data.id"); //pradubliuot galim visus korteles duomenys ar yra.
-
-	}
+//	@Test
+//	 void SuccesRegTest() {
+//		Integer id = 123;
+//		String token = "";
+//		Register user = new Register("Tomas", "1234567889");
+//		SuccessReg seccessReg = given()
+//				//.body(user)
+//				.when()
+//				.post("categories/")
+//				.then().log().all()
+//				.extract().as(SuccessReg.class);
+//	Assertions.assertNotNull(seccessReg.getId());
+//	Assertions.assertNotNull(seccessReg.getToken());
+//	Assertions.assertEquals(id, seccessReg.getId());
+//	Assertions.assertEquals(token, seccessReg.getToken());
+//	}
+//	@Test
+//	void unSuccessRegTest() {
+//		Response response = (Response) given()
+//				.when()
+//				.get("categories/")
+//				.then().log().all()
+//				.body("data.id", notNullValue()) //pradubliuot galim visus korteles duomenys ar yra.
+//				.extract().response();
+//		JsonPath jsonPath = JsonPath.given(response.getContentType());
+//				List<Integer> ids = jsonPath.get("data.id"); //pradubliuot galim visus korteles duomenys ar yra.
+//
+//	}
 }

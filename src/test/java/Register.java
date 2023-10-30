@@ -1,9 +1,17 @@
 public class Register {
-    private String login;
-    private String password;
+    private String id;
+    private String user;
 
     public Register(String login, String password) {
-        this.login = login;
-        this.password = password;
+        this.id = login;
+        this.user = password;
+    }
+
+    public String getLogin() {
+        return id;
+    }
+
+    public String getPassword() {
+        return user;
     }
 }
