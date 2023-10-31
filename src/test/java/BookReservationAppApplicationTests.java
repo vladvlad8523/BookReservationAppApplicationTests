@@ -1,6 +1,5 @@
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
-import java.util.List;
 import static io.restassured.RestAssured.given;
 
 class BookReservationAppApplicationTests {
@@ -18,7 +17,7 @@ class BookReservationAppApplicationTests {
 	}
 	@Test
 	 void namePostTest() {
-		Category user = new Category("Romas");
+		Category user = new Category("Robin");
 		String category = given()
 				.log().all()
 				.contentType("application/json")
@@ -26,6 +25,7 @@ class BookReservationAppApplicationTests {
 				.when()
 				.post(URL + "/categories")
 				.then().log().all()
+				//.statusCode(200)
 				.extract().body().jsonPath().getString("user");
 	}
 }

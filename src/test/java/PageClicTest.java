@@ -1,5 +1,7 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+
 import static com.codeborne.selenide.Selenide.*;
 
 public class PageClicTest extends BaseSettingsTest{
@@ -10,6 +12,13 @@ public class PageClicTest extends BaseSettingsTest{
         open("http://localhost:3000/");
         $x("//a/img").click();
         $x("//ul/li/a[@class='nav-link'][1]").click();
+       /**
+        * tikrinam forma
+        */
+       $(By.cssSelector(".btn.btn-success")).click();
+        $(By.className("form-control")).setValue("Laisvalaikis");
+        $(By.cssSelector("form > .btn.btn-primary")).click();
+
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/books']").click();
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/favorite']").click();
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/reserved']").click();
