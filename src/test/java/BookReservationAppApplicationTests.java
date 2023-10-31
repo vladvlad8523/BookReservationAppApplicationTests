@@ -1,12 +1,6 @@
-
-
 import io.restassured.http.ContentType;
-import org.example.UserData;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.List;
-import java.util.Locale;
-
 import static io.restassured.RestAssured.given;
 
 class BookReservationAppApplicationTests {
@@ -14,26 +8,24 @@ class BookReservationAppApplicationTests {
 
 	@Test
 	void showNamesTest() {
-		List<UserData> users = given()
+		String users = given()
 				.when()
 				.contentType(ContentType.JSON)
 				.get(URL + "/categories")
 				.then().log().all()
-				.extract().body().jsonPath().getList("name", UserData.class);
+				.statusCode(200)
+				.extract().body().jsonPath().getString("name");
 	}
 	@Test
 	 void namePostTest() {
-
-		Category user = new Category("Menulis");
-		Category category = given()
+		Category user = new Category("Romas");
+		String category = given()
 				.log().all()
 				.contentType("application/json")
 				.body(user)
 				.when()
 				.post(URL + "/categories")
 				.then().log().all()
-				.extract().response().as(Category.class);
-
-
+				.extract().body().jsonPath().getString("user");
 	}
 }
