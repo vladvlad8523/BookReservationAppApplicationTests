@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PageClicTest extends BaseSettingsTest{
+    String text = "Laisvalaikis";
     @Test
      void testClick() {
         Configuration.browser = "chrome";
@@ -14,11 +15,15 @@ public class PageClicTest extends BaseSettingsTest{
         $x("//ul/li/a[@class='nav-link'][1]").click();
        /**
         * tikrinam forma
+        * start
         */
-       $(By.cssSelector(".btn.btn-success")).click();
-        $(By.className("form-control")).setValue("Laisvalaikis");
+        $(By.cssSelector(".btn.btn-success")).click();
+        $(By.className("form-control")).setValue("text");
         $(By.cssSelector("form > .btn.btn-primary")).click();
-
+        $(By.cssSelector("[value='text']"));
+        /**
+         * end
+         */
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/books']").click();
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/favorite']").click();
         $x("//div[@id='navbarSupportedContent']/ul//a[@href='/reserved']").click();
