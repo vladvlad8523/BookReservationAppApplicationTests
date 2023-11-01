@@ -17,15 +17,15 @@ class BookReservationAppApplicationTests {
 	}
 	@Test
 	 void namePostTest() {
-		Category user = new Category("Robin");
+		Category name = new Category( "A", "");
 		String category = given()
 				.log().all()
 				.contentType("application/json")
-				.body(user)
+				.body(name)
 				.when()
-				.post(URL + "/categories")
+				.post(URL + "/categories/2")
 				.then().log().all()
-				//.statusCode(200)
-				.extract().body().jsonPath().getString("user");
+				//.statusCode(201)
+				.extract().body().jsonPath().getString("name");
 	}
 }
