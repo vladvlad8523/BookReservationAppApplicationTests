@@ -1,8 +1,7 @@
-import io.restassured.path.json.JsonPath;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class Category {
-    
+
     private String name;
 
     public Category( String charUP, String categoryName) {

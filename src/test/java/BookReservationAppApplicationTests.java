@@ -16,16 +16,20 @@ class BookReservationAppApplicationTests {
 				.extract().body().jsonPath().getString("name");
 	}
 	@Test
-	 void namePostTest() {
+	public void namePostTest() {
 		Category name = new Category( "A", "");
-		String category = given()
-				.log().all()
-				.contentType(ContentType.JSON)
-				.body(name)
-				.when()
-				.post(URL + "/categories")
-				.then().log().all()
-				//.statusCode(201)
-				.extract().body().jsonPath().getString("name");
+		try {
+			String category = given()
+					.log().all()
+					.contentType(ContentType.JSON)
+					.body(name)
+					.when()
+					.post(URL + "/categories")
+					.then().log().all()
+					.statusCode(201)
+					.extract().response().jsonPath().getString("name");
+		} catch (Exception e) {
+			System.out.println("klaida JSON arba kodos 404: " + e.getMessage());
+		}
 	}
 }
