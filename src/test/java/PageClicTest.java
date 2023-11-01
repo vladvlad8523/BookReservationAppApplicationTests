@@ -14,7 +14,7 @@ public class PageClicTest extends BaseSettingsTest{
         $x("//a/img").click();
         $x("//ul/li/a[@class='nav-link'][1]").click();
        /**
-        * tikrinam forma
+        * tikrinam forma categories
         * start
         */
         $(By.cssSelector(".btn.btn-success")).click();
