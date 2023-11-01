@@ -5,10 +5,10 @@ public class Category {
     
     private String name;
 
-    public Category( String A, String categoryName) {
+    public Category( String charUP, String categoryName) {
 
         categoryName = RandomStringUtils.randomAlphanumeric(4).toLowerCase();
-        this.name = A + categoryName;
+        this.name = charUP + categoryName;
     }
 
     public String getName() {

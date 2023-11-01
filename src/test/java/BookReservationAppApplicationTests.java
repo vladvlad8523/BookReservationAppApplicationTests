@@ -20,10 +20,10 @@ class BookReservationAppApplicationTests {
 		Category name = new Category( "A", "");
 		String category = given()
 				.log().all()
-				.contentType("application/json")
+				.contentType(ContentType.JSON)
 				.body(name)
 				.when()
-				.post(URL + "/categories/2")
+				.post(URL + "/categories")
 				.then().log().all()
 				//.statusCode(201)
 				.extract().body().jsonPath().getString("name");
