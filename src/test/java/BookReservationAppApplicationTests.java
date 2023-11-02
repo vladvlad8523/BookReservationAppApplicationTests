@@ -1,4 +1,5 @@
 import io.restassured.http.ContentType;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
@@ -15,7 +16,8 @@ class BookReservationAppApplicationTests {
 				.statusCode(200)
 				.extract().body().jsonPath().getString("name");
 	}
-	@Test
+	//@Test()
+	@RepeatedTest(3)
 	public void namePostTest() {
 		Category name = new Category( "A", "");
 		try {
@@ -29,7 +31,7 @@ class BookReservationAppApplicationTests {
 					.statusCode(201)
 					.extract().response().jsonPath().getString("name");
 		} catch (Exception e) {
-			System.out.println("klaida JSON arba kodos 404: " + e.getMessage());
+			System.out.println("klaida JSON: " + e.getMessage());
 		}
 	}
 }
