@@ -10,7 +10,9 @@ abstract public class BaseSettingsTest {
         Configuration.browser = "chrome";
         Configuration.webdriverLogsEnabled = true;
         Configuration.browserSize = "1680x1050";
-        Configuration.headless = false;
+        Configuration.headless = true;
+        Configuration.holdBrowserOpen = true;
+        Configuration.timeout = 6000;
     }
     @Before
     public void  init() {
