@@ -16,6 +16,7 @@ public class PageClicTest extends BaseSettingsTest{
        /**
         * tikrinam forma categories
         * start
+        * pvz.: Vardenis
         */
         $(By.cssSelector(".btn.btn-success")).click();
         $(By.className("form-control")).setValue("text");
