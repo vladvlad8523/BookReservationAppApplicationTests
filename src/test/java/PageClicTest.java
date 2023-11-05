@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -6,6 +7,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PageClicTest extends BaseSettingsTest{
     String text = "Laisvalaikis";
+    @DisplayName("PageClicTest")
     @Test
      void testClick() {
         Configuration.browser = "chrome";

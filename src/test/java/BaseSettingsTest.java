@@ -1,8 +1,11 @@
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 
 abstract public class BaseSettingsTest {
     public void setUp() {
@@ -16,6 +19,10 @@ abstract public class BaseSettingsTest {
     }
     @Before
     public void  init() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
+                .screenshots(true)
+                .savePageSource(true)
+        );
         setUp();
     }
     @After
