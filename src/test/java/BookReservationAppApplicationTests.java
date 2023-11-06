@@ -20,27 +20,27 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
 				.extract().body().jsonPath().getString("name");
 	}
 
-	//@Test
-//	@DisplayName("POST TEST 3x random")
-//	@RepeatedTest(3)
-//	public void namePostTest() {
-//		Category name = new Category( "A", "");
-//		try {
-//			String category = given()
-//					.log().all()
-//					.contentType(ContentType.JSON)
-//					.body(name)
-//					.when()
-//					.post(URL + "/categories")
-//					.then().log().all()
-//					.assertThat().statusCode(Matchers.oneOf(201))
-//					.extract().response().jsonPath().getString("name");
-//
-//		} catch (Exception e) {
-//			System.out.println("error JSON: " + e.getMessage());
-//
-//		}
-//	}
+	@Test
+	@DisplayName("POST TEST 3x random")
+	@RepeatedTest(3)
+	public void namePostTest() {
+		Category name = new Category( "A", "");
+		try {
+			String category = given()
+					.log().all()
+					.contentType(ContentType.JSON)
+					.body(name)
+					.when()
+					.post(URL + "/categories")
+					.then().log().all()
+					.assertThat().statusCode(Matchers.oneOf(201))
+					.extract().response().jsonPath().getString("name");
+
+		} catch (Exception e) {
+			System.out.println("error JSON: " + e.getMessage());
+
+		}
+	}
 	@RepeatedTest(3)
 	@Step
 	@DisplayName("POST TEST 3x")
@@ -66,3 +66,5 @@ class BookReservationAppApplicationTests extends BaseSettingsTest {
 		}
 	}
 }
+//allure generate target/allure-results --clean
+//allure serve

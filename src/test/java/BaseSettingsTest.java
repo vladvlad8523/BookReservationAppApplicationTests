@@ -5,7 +5,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
 
 abstract public class BaseSettingsTest {
     public void setUp() {
